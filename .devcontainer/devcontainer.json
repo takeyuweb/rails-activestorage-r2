@@ -1,0 +1,12 @@
+{
+    "name": "rails-activestorage-r2",
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "docker-compose.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/src",
+    "settings": {
+        "editor.tabSize": 2
+    }
+}

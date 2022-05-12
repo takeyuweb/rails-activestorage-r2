@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile.dev
+      args:
+        - DIR=/src
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/src
+    user: ${ARG_USER:-ruby}
+    command: >
+      /bin/sh -c "rm -f tmp/pids/server.pid && bundle install --without production && bundle exec bin/rails -b 0.0.0.0 -p 3000"
+    ports:
+      - 3000:3000
+    environment:
+      BUNDLE_PATH: ${BUNDLE_PATH:-/src/vendor/bundle}
+
